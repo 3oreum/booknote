@@ -63,7 +63,20 @@
 	</div>
 	
 	<%-- 리뷰창 --%>
-	<div></div>
+	<div class="ml-5 mt-5">
+		<div>
+			<a href="#" class="like-btn" data-post-id="${card.post.id}">
+				<img src="/static/images/Ulike.png" width="25" height="25" alt="filled heart">
+				<img src="/static/images/Ulike.png" width="25" height="25" alt="filled heart">
+				<img src="/static/images/Ulike.png" width="25" height="25" alt="filled heart">
+				<img src="/static/images/Ulike.png" width="25" height="25" alt="filled heart">
+				<img src="/static/images/Ulike.png" width="25" height="25" alt="filled heart">
+			</a>
+		</div>
+		<div class="write-box border rounded d-flex">
+			<textarea id="writeTextArea" placeholder="내용을 입력해주세요" class="w-100 border-0"></textarea>
+			<button id="writeBtn" class="btn btn-light">등록</button>
+	</div>
 	
 	<%-- 리뷰 목록 --%>
 	<div></div>

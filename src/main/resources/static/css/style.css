@@ -1,8 +1,16 @@
 @charset "UTF-8";
 footer {height: 100px;}
-a {text-decoration: none; color: black;}
+a {color: #000;  text-decoration:none;}
+a:hover {color: #000; text-decoration:none;}
 
 .contents-box {width:650px;}
 .header {height: 150px;}
 .contents {min-height: 500px;}
 .card {background-color: lightgrey;}
+
+#writeTextArea {height:100px;}
+
+.vl {
+  border-left: 2px solid rgb(223, 223, 223);
+  min-height:  500px;
+}
