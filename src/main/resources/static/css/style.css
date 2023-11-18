@@ -1,0 +1,8 @@
+@charset "UTF-8";
+footer {height: 100px;}
+a {text-decoration: none; color: black;}
+
+.contents-box {width:650px;}
+.header {height: 150px;}
+.contents {min-height: 500px;}
+.card {background-color: lightgrey;}
