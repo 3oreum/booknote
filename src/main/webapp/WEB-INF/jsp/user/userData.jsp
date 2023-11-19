@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- !!!!!!!!! 리뷰 목록  !!!!!!!!! --%>
 <div class="d-flex">
 	<%-- 왼쪽 메뉴 --%>
 	<aside>
 		<div class="ml-3 mb-5">
-			<h3>아이디</h3>
-			<small>이메일</small>
+			<h3>${userLoginId}</h3>
+			<small>${userEmail}</small>
 		</div>
 		<ul class="nav flex-column">
 			<li class="nav-item font-weight-bold"><a href="/user/user-data-view" class="nav-link">리뷰 목록</a></li>

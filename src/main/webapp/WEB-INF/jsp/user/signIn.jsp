@@ -24,5 +24,35 @@
 </div>
 
 <script>
-
+$(document).ready(function(){
+	
+	// 로그인
+	$("#loginForm").submit(function(e){
+		e.preventDefault(); 
+		
+		let loginId = $('input[name=loginId]').val().trim();
+		if (loginId == '') {
+			alert("아이디를 입력해주세요.");
+			return;
+		}
+		
+		let password = $('input[name=password]').val();
+		if (password == '') {
+			alert("비밀번호를 입력해주세요.");
+			return;
+		}
+		
+		let url = $(this).attr('action');
+		let data = $(this).serialize(); // form의 name 속성으로 data를 구성한다.
+		
+		$.post(url, data)
+		.done(function(data) {
+			if (data.result == "성공") {
+				location.href="/book/booknote-view"; 
+			} else {
+				alert("로그인에 실패했습니다. 다시 시도해주세요.");
+			}
+		}); 
+	});
+});
 </script>

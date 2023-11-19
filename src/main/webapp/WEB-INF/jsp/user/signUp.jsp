@@ -39,3 +39,100 @@
 		</form>
 	</div>
 </div>
+
+<script>
+$(document).ready(function(){
+	
+	
+	// 중복 확인
+	$("#loginIdCheckBtn").on('click', function(){
+		//alert("중복확인");
+		
+		$('#idCheckLength').addClass('d-none');
+		$('#idCheckDuplicated').addClass('d-none');
+		$('#idCheckOk').addClass('d-none');
+		
+		let loginId = $("#loginId").val().trim();
+		
+		if (loginId.length < 4) {
+			$('#idCheckLength').removeClass('d-none');
+			return;
+		}
+		
+		$.ajax({
+			type:"GET"
+			, url:"/user/is-duplicated-id"
+			, data:{"loginId":loginId}
+		
+			, success:function(data){
+				if (data.isDuplicatedId){ // 중복
+					$("#idCheckDuplicated").removeClass('d-none');
+				} else { // 중복 아님 
+					$("#idCheckOk").removeClass('d-none');
+				}
+			}
+			, error:function(request, status, error){
+				//alert("중복 확인에 실패했습니다.");
+				alert(request);
+				alert(status);
+				alert(error);
+			}
+		});
+		
+	});
+	
+	// 회원가입
+	$("#signUpForm").on('submit', function(e){
+		//alert("회원가입");
+		e.preventDefault();
+		
+		let loginId = $("input[name=loginId]").val().trim();
+		let password = $("input[name=password]").val();
+		let confirmPassword = $("input[name=confirmPassword]").val();
+		let email = $("input[name=email]").val().trim();
+		
+		if (!loginId){
+			alert("아이디를 입력하세요.");
+			return false;
+		}
+		
+		if (!password || !confirmPassword){
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+		
+		if (password != confirmPassword){
+			alert("비밀번호가 일치하지 않습니다.");
+			return false;
+		}
+		
+		if (!email){
+			alert("이메일을 입력하세요.");
+			return false;
+		}
+		
+		// 아이디 중복 확인이 완료되었는지 확인 => idCheckOk d-none이 있으면 얼럿을 띄워야함
+		if ($("#idCheckOk").hasClass('d-none')){
+			alert("아이디 중복 확인을 해 주세요.");
+			return false;
+		}
+		
+		let url = $(this).attr('action');
+		//alert(url);
+		let params = $(this).serialize();
+		console.log(params);
+		
+		$.post(url, params)
+		.done(function(data){ // response
+			// {"code":200, "result":"성공"}
+			if (data.code == 200){
+				alert("가입을 환영합니다. 로그인을 해 주세요.");
+				location.href = "/user/sign-in-view";
+			} else {
+				alert(data.errorMessage);
+			}
+			
+		});
+	});
+});
+</script>
