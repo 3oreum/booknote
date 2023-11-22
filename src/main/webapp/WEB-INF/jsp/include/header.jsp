@@ -13,8 +13,13 @@
 	
 	<%-- (로그인 x) => 로그인 회원가입 & (로그인 o) => 내정보 로그아웃 --%>
 	<div class="d-flex col-3 justify-content-end align-items-center mt-2">
+		
+		<c:if test="${not empty userLoginId && userLoginId == admin}">
+			<a href="/manager/manager-set-view" class="font-weight-bold mr-5 text-black">관리자 페이지</a>
+			<a href="/user/sign-out" class="font-weight-bold">로그아웃</a>
+		</c:if>
 		<c:if test="${not empty userLoginId}">
-			<a href="/user/user-data-view" class="font-weight-bold mr-5 text-black">내 정보</a>
+		<a href="/user/user-data-view" class="font-weight-bold mr-5 text-black">내 정보</a>
 			<a href="/user/sign-out" class="font-weight-bold">로그아웃</a>
 		</c:if>
 		

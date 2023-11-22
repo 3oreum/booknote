@@ -115,4 +115,31 @@ public class UserRestController {
 		
 		return result;
 	}
+	
+	// 비밀번호 변경 
+//	@PostMapping("/re-password")
+//	public Map<String, Object> rePassword(
+//			@RequestParam("password") String password,
+//			@RequestParam("newPassowrd") String newPassowrd,
+//			HttpSession session){
+//		
+//		int userId = (int)session.getAttribute("userId");
+//		String userLoginId = (String)session.getAttribute("userLoginId");
+//		String userPassword = (String)session.getAttribute("userPassword");
+//		
+//		// 비밀번호 해싱
+//		String hashedPassword = EncryptUtils.md5(password);
+//		String hashedNewPassword = EncryptUtils.md5(newPassowrd);
+//		
+//		// DB update
+//		if (userPassword == hashedPassword) {
+//			userBO.updatePassword(userId, userLoginId, hashedPassword, hashedNewPassword);
+//		}
+//		
+//		
+//		Map<String, Object> result = new HashMap<>();
+//		result.put("code", 200);
+//		result.put("result", "성공");
+//		return result;
+//	}
 }

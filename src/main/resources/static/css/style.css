@@ -8,6 +8,12 @@ thead {background-color:lightgray}
 .header {height: 150px;}
 .contents {min-height: 500px;}
 .card {background-color: lightgrey;}
+.box {width:650px; background-color:#ebebeb; margin-top:20px; }
+.book-box {width: 160px; margin-top:20px;}
+.point-box {padding-right: 100px;}
+.qna-box1 {width:650px; height: 500px; background-color:#ebebeb; margin-top:20px; }
+.qna-box2 {width:450px; background-color:darkgrey; margin-top:20px; }
+.review-box {width: 800px; height:150px; background-color:#ebebeb;}
 
 #writeTextArea {height:100px;}
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
 	<%-- 책 관련 소개 --%>
 	<div class="d-flex ">
@@ -28,15 +29,15 @@
 		<div class="card border rounded">
 		
 		<%-- 평균 평점 --%>
-		<div>
-			<div class="d-flex">
+		<div class="d-flex justify-content-center">
+			<div class="mr-5 mt-3 point-box">
 				<h3>평점</h3>
-				<div class="display-3">10.0</div>
-				<div class="display-4">/10.0</div>
+				<span class="display-3">10.0</span>
+				<span class="display-4">/10.0</span>
 			</div>
 			
 			<%-- 평점 개수 --%>
-			<div class="">
+			<div class="ml-5">
 				<div>
 					<img src="/static/images/like5.png" width="150" height="30" alt="평점5">
 					<span>10명</span>
@@ -65,7 +66,8 @@
 	<%-- 리뷰창 --%>
 	<div class="ml-5 mt-5">
 		<div>
-			<a href="#" class="like-btn" data-post-id="${card.post.id}">
+		<c:if test="${not empty userLoginId}">
+			<a href="#" class="like-btn" data-post-id="">
 				<img src="/static/images/Ulike.png" width="25" height="25" alt="filled heart">
 				<img src="/static/images/Ulike.png" width="25" height="25" alt="filled heart">
 				<img src="/static/images/Ulike.png" width="25" height="25" alt="filled heart">
@@ -73,11 +75,49 @@
 				<img src="/static/images/Ulike.png" width="25" height="25" alt="filled heart">
 			</a>
 		</div>
-		<div class="write-box border rounded d-flex">
+		
+		<div class="write-box border rounded d-flex mb-5">
 			<textarea id="writeTextArea" placeholder="내용을 입력해주세요" class="w-100 border-0"></textarea>
 			<button id="writeBtn" class="btn btn-light">등록</button>
-	</div>
-	
+		</div>
+		</c:if>
 	<%-- 리뷰 목록 --%>
-	<div></div>
+	<%-- 작성된 리뷰가 있을 때 --%>
+	<div class="container ml-5">
+		<div class="review-box"> <%-- 반복문으로  --%>
+			<div class="d-flex justify-content-between">
+				<h2 class="m-2">제목</h2>
+				<div>
+					<a href="#" class="updateReview mr-3">수정</a>
+					<a href="#" class="deleteReview mr-5">삭제</a>
+					<img alt="평점" src="/static/images/Ulike.png" width="25" height="25">
+				</div>	
+			</div>
+			
+			<div class="m-3">내용</div>
+		</div>
+	</div>
+	<%-- 작성된 리뷰가 없을 때  --%>
+	<div class="container d-none">
+		<div class="d-flex justify-content-center">
+			<span>아직 작성된 리뷰가 없습니다.</span>
+		</div>
+	</div>
 </div>
+</div>
+
+<script>
+$(document).ready(function(){
+	
+	// 리뷰 등록 버튼
+	$("#writeBtn").on('click', function(){
+		
+		let content = $("#writeTextArea").val();
+		
+		if (!content){
+			alert("내용을 입력해 주세요.");
+			return;
+		}
+	});
+});
+</script>
